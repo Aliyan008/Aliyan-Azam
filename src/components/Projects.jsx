@@ -1,3 +1,5 @@
+import ProjectCard from './ProjectCard';
+
 const projects = [
   {
     id: 'booking',
@@ -51,40 +53,7 @@ function Projects() {
       <h2 className="section-title">Projects</h2>
       <div className="projects-grid">
         {projects.map((project) => (
-          <article key={project.id} className="project-card">
-            <div className="project-placeholder" aria-hidden="true">
-              {project.title.slice(0, 2)}
-            </div>
-            <h3 className="project-title">{project.title}</h3>
-            <p className="project-desc">{project.description}</p>
-            <div className="project-stack">
-              {project.stack.map((tech) => (
-                <span key={tech} className="stack-tag">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            <div className="project-links">
-              {project.playStoreUrl && (
-                <a
-                  href={project.playStoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link project-link-primary"
-                >
-                  Get on Play Store
-                </a>
-              )}
-              {project.secondaryLink && project.secondaryLabel && (
-                <a
-                  href={project.secondaryLink}
-                  className="project-link"
-                >
-                  {project.secondaryLabel}
-                </a>
-              )}
-            </div>
-          </article>
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
     </section>

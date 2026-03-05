@@ -216,23 +216,16 @@
     border-color 0.18s ease, background-color 0.18s ease;
 }
 
-.project-placeholder {
-  width: 100%;
-  aspect-ratio: 16/10;
-  background: var(--border);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+.project-card-header {
+  padding: 0.75rem 0;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .project-title {
-  font-size: 1.15rem;
-  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .project-desc {
@@ -267,6 +260,16 @@
 .project-link {
   font-size: 0.9rem;
   font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.project-link:hover {
+  color: var(--accent-hover);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0;
 }
 
 .project-link-primary {
