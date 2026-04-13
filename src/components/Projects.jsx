@@ -12,29 +12,17 @@ const projects = [
     secondaryLabel: null,
   },
   {
-    id: 'food',
-    title: 'Food Delivery Application',
+    id: 'wordwise',
+    title: 'WordWise',
     description:
-      'Food delivery platform with real-time tracking and a streamlined ordering experience.',
-    stack: ['Flutter', 'Firebase'],
+      'Word puzzle game inspired by Wordle with user authentication, gameplay preferences, and leaderboard flow using Supabase.',
+    stack: ['React', 'JavaScript', 'CSS', 'Supabase'],
     playStoreUrl: null,
-    secondaryLink:
-      'https://www.linkedin.com/posts/aliyan-azam-273742270_flutter-mobiledevelopment-fooddeliveryapp-activity-7197976428959686656-JDkp',
+    secondaryLink: 'https://github.com/Aliyan008/wordwise',
     secondaryLabel: 'View Project',
   },
   {
     id: 'ecommerce',
-    title: 'E-Commerce Application',
-    description:
-      'Full-featured e-commerce platform with secure payment integration and product management.',
-    stack: ['Flutter', 'Firebase'],
-    playStoreUrl: null,
-    secondaryLink:
-      'https://www.linkedin.com/posts/aliyan-azam-273742270_flutter-ecommerce-shoestoreapp-activity-7197978083621031936-wz1k',
-    secondaryLabel: 'View Project',
-  },
-  {
-    id: 'chat',
     title: 'Real-time Chat Application',
     description:
       'Secure messaging app with modern UI/UX and real-time updates.',
@@ -42,6 +30,16 @@ const projects = [
     playStoreUrl: null,
     secondaryLink:
       'https://www.linkedin.com/posts/aliyan-azam-273742270_flutterdev-firebase-mobileapp-activity-7203792210729877504-p6QB',
+    secondaryLabel: 'View Project',
+  },
+  {
+    id: 'chat',
+    title: 'Sales Performance Dashboard',
+    description:
+      'Interactive Power BI dashboard analyzing retail sales performance by customer, country, and time period with KPI tracking and slicers.',
+    stack: ['Power BI', 'DAX', 'Excel'],
+    playStoreUrl: null,
+    secondaryLink: 'https://github.com/Aliyan008/Sales-Dashboard',
     secondaryLabel: 'View Project',
   },
 ];
