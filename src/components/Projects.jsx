@@ -1,4 +1,7 @@
+import Section from './Section';
+import SectionLabel from './SectionLabel';
 import ProjectCard from './ProjectCard';
+import Reveal from './Reveal';
 
 const projects = [
   {
@@ -7,7 +10,8 @@ const projects = [
     description:
       'Full-stack order booking system for bookers and distributors. Replaces manual Excel-based booking with a Flutter mobile app, Firebase Authentication, and a PHP backend connected to SQL.',
     stack: ['Flutter', 'Firebase', 'PHP', 'SQL'],
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.franscent.orderbooking',
+    playStoreUrl:
+      'https://play.google.com/store/apps/details?id=com.franscent.orderbooking',
     secondaryLink: null,
     secondaryLabel: null,
   },
@@ -22,7 +26,7 @@ const projects = [
     secondaryLabel: 'View Project',
   },
   {
-    id: 'ecommerce',
+    id: 'chat',
     title: 'Real-time Chat Application',
     description:
       'Secure messaging app with modern UI/UX and real-time updates.',
@@ -33,7 +37,7 @@ const projects = [
     secondaryLabel: 'View Project',
   },
   {
-    id: 'chat',
+    id: 'dashboard',
     title: 'Sales Performance Dashboard',
     description:
       'Interactive Power BI dashboard analyzing retail sales performance by customer, country, and time period with KPI tracking and slicers.',
@@ -46,15 +50,19 @@ const projects = [
 
 function Projects() {
   return (
-    <section id="projects">
-      <p className="section-eyebrow">03 — Projects</p>
-      <h2 className="section-title">Projects</h2>
-      <div className="projects-grid">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} {...project} />
+    <Section id="projects">
+      <Reveal>
+        <SectionLabel number="03" label="Projects" />
+        <h2 className="font-serif text-4xl md:text-5xl text-ink mb-12 leading-tight">
+          Selected work.
+        </h2>
+      </Reveal>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} index={index} {...project} />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
 
