@@ -22,8 +22,8 @@ const projects = [
       'Word puzzle game inspired by Wordle with user authentication, gameplay preferences, and leaderboard flow using Supabase.',
     stack: ['React', 'JavaScript', 'CSS', 'Supabase'],
     playStoreUrl: null,
-    secondaryLink: 'https://github.com/Aliyan008/wordwise',
-    secondaryLabel: 'View Project',
+    secondaryLink: 'https://wordwise-orpin.vercel.app/',
+    secondaryLabel: 'Visit Site',
   },
   {
     id: 'chat',
