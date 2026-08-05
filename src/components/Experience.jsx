@@ -4,14 +4,14 @@ import Reveal from './Reveal';
 
 const experience = [
   {
-    company: 'Metro Milan Aggarbatti',
+    company: 'Metro Agarbatti Company',
     role: 'Full Stack Developer',
     period: 'July 2025 — Present',
     location: 'Karachi, Pakistan',
     points: [
-      'Full-stack application development: frontend, backend, and database integration.',
-      'Flutter for mobile UI and Firebase for authentication.',
-      'Data handling, validation, and system optimization.',
+      'Fixed a backend race condition and added offline sync polling in a custom Sales ERP platform used daily by 40+ field reps, cutting 10-15 failed orders a day down to zero and ending recurring user complaints.',
+      'Added live location tracking to verify reps were placing orders at the correct shop, reducing false orders and false attendance by over 90%.',
+      'Replaced informal WhatsApp based issue reporting with a custom ticketing system for the office sales team, bringing full visibility to bugs and issues that used to go untracked.',
     ],
   },
   {
@@ -20,9 +20,8 @@ const experience = [
     period: '2024',
     location: 'Kamra, Pakistan',
     points: [
-      'Reviewed maintenance data systems for fighter jets and suggested improvements.',
-      'Documented workflows to improve data organization and clarity.',
-      'Assisted engineers in organizing technical data for maintenance procedures.',
+      'Observed maintenance and logging procedures for fighter jet systems at a Pakistan Air Force facility, gaining exposure to how technical data is tracked at each stage of maintenance.',
+      'Compiled observation reports evaluated by engineering staff on maintenance workflows and data organization.',
     ],
   },
 ];
