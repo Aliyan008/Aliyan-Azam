@@ -60,7 +60,7 @@ function Experience() {
               {job.points.map((point) => (
                 <li
                   key={point}
-                  className="font-sans font-light text-sm text-ink-light leading-relaxed pl-5 relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-px before:bg-warm-border"
+                  className="font-sans font-light text-sm text-ink-light leading-relaxed pl-5 relative text-justify before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-2 before:h-px before:bg-warm-border"
                 >
                   {point}
                 </li>

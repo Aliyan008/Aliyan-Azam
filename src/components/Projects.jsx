@@ -5,46 +5,45 @@ import Reveal from './Reveal';
 
 const projects = [
   {
-    id: 'booking',
-    title: 'Order Booking Application',
+    id: 'erp-admin',
+    title: 'Sales ERP Admin Panel',
     description:
-      'Full-stack order booking system for bookers and distributors. Replaces manual Excel-based booking with a Flutter mobile app, Firebase Authentication, and a PHP backend connected to SQL.',
-    stack: ['Flutter', 'Firebase', 'PHP', 'SQL'],
+      'A centralized operations platform built with React and Supabase, handling order tracking, role-based access control (RBAC), and a structured ticket logging system for issue management. Implemented Supabase Row Level Security (RLS) policies and access control mechanisms as part of a full security audit, hardening the platform against unauthorized data access. Architected and developed independently, currently deployed in production for two active clients.',
+    stack: ['React', 'Supabase', 'MySQL', 'GitHub Actions', 'Docker'],
+    playStoreUrl: null,
+    secondaryLink: null,
+    secondaryLabel: null,
+  },
+  {
+    id: 'field-sales-app',
+    title: 'Field Sales Mobile App',
+    description:
+      'Replaced a manual paper-based ordering workflow, where field reps filled out paper bills that office staff later transcribed into Excel, with a Flutter application supporting real-time order sync and offline queuing. Implemented API integration with structured error handling and retry logic to ensure reliable data transfer between the app and backend. Added live GPS-based location tracking for attendance verification and order validation, ensuring orders are only logged when placed at the correct location. Used daily by 40+ field reps in production, with security measures in place to protect rep and order data.',
+    stack: ['Flutter', 'Firebase', 'PHP', 'MySQL'],
     playStoreUrl:
       'https://play.google.com/store/apps/details?id=com.franscent.orderbooking',
     secondaryLink: null,
     secondaryLabel: null,
   },
   {
-    id: 'wordwise',
-    title: 'WordWise',
-    description:
-      'Word puzzle game inspired by Wordle with user authentication, gameplay preferences, and leaderboard flow using Supabase.',
-    stack: ['React', 'JavaScript', 'CSS', 'Supabase'],
-    playStoreUrl: null,
-    secondaryLink: 'https://wordwise-orpin.vercel.app/',
-    secondaryLabel: 'Visit Site',
-  },
-  {
-    id: 'chat',
-    title: 'Real-time Chat Application',
-    description:
-      'Secure messaging app with modern UI/UX and real-time updates.',
-    stack: ['Flutter', 'Firebase'],
-    playStoreUrl: null,
-    secondaryLink:
-      'https://www.linkedin.com/posts/aliyan-azam-273742270_flutterdev-firebase-mobileapp-activity-7203792210729877504-p6QB',
-    secondaryLabel: 'View Project',
-  },
-  {
     id: 'dashboard',
     title: 'Sales Performance Dashboard',
     description:
       'Interactive Power BI dashboard analyzing retail sales performance by customer, country, and time period with KPI tracking and slicers.',
-    stack: ['Power BI', 'DAX', 'Excel'],
+    stack: ['Power BI', 'Excel'],
     playStoreUrl: null,
     secondaryLink: 'https://github.com/Aliyan008/Sales-Dashboard',
     secondaryLabel: 'View Project',
+  },
+  {
+    id: 'wordwise',
+    title: 'WordWise',
+    description:
+      'Word puzzle game inspired by Wordle with user authentication, gameplay preferences, and leaderboard flow using Supabase.',
+    stack: ['React', 'Supabase', 'GitHub Actions'],
+    playStoreUrl: null,
+    secondaryLink: 'https://wordwise-orpin.vercel.app/',
+    secondaryLabel: 'Visit Site',
   },
 ];
 
@@ -57,7 +56,7 @@ function Projects() {
           Selected work.
         </h2>
       </Reveal>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5 items-start">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} index={index} {...project} />
         ))}
