@@ -1,33 +1,33 @@
 import { motion } from 'framer-motion';
-import { Smartphone, Code2, BarChart2, Palette } from 'lucide-react';
+import { MonitorSmartphone, Database, BarChart2, Rocket } from 'lucide-react';
 import Section from './Section';
 import SectionLabel from './SectionLabel';
 import Reveal from './Reveal';
 
 const services = [
   {
-    icon: Smartphone,
-    title: 'Mobile Apps',
+    icon: MonitorSmartphone,
+    title: 'Frontend & Mobile',
     description:
-      'Development of applications for Android and iOS using Flutter.',
+      'Building interfaces with React for web and Flutter for Android and iOS, shipped and used daily in production.',
   },
   {
-    icon: Code2,
-    title: 'Frontend Development',
+    icon: Database,
+    title: 'Backend & Data',
     description:
-      'Building responsive, intuitive interfaces with React and modern web technologies.',
+      'Firebase, Supabase, and PostgreSQL for authentication, data modeling, and RLS-based security, plus REST API integration.',
   },
   {
     icon: BarChart2,
     title: 'Data Analysis',
     description:
-      'Working with Python (pandas, numpy), SQL, Power BI, and Excel to analyze data and support decisions.',
+      'Python, SQL, and BI tools used to clean, analyze, and visualize data for real decision-making.',
   },
   {
-    icon: Palette,
-    title: 'UI/UX Design',
+    icon: Rocket,
+    title: 'Deployment',
     description:
-      'Designing clear, functional user experiences for web and mobile applications.',
+      'Automated testing and deployment pipelines with GitHub Actions, plus debugging and maintaining production issues for systems used daily by real users.',
   },
 ];
 
@@ -61,7 +61,7 @@ function WhatIDo() {
                 <div className="w-9 h-9 rounded bg-sage-light flex items-center justify-center mb-5">
                   <Icon size={18} className="text-sage" />
                 </div>
-                <h3 className="font-serif text-xl text-ink mb-2 leading-snug">
+                <h3 className="font-serif text-xl text-ink mb-2 leading-snug min-h-[3.5rem] flex items-center">
                   {item.title}
                 </h3>
                 <p className="font-sans font-light text-sm text-ink-light leading-relaxed">
