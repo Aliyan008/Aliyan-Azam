@@ -5,8 +5,8 @@ import Reveal from './Reveal';
 
 const stats = [
   { value: '2025', label: 'BS Computer Science, DUET' },
-  { value: '2+', label: 'Years of experience' },
-  { value: '5+', label: 'Projects built' },
+  { value: '1.5+', label: 'Years of experience' },
+  { value: '3', label: 'Production systems built and maintained' },
 ];
 
 function About() {
@@ -24,19 +24,21 @@ function About() {
           <p className="font-sans font-light text-ink-light leading-relaxed mb-5">
             I graduated from Dawood University of Engineering &amp; Technology
             (DUET) in July 2025 with a Bachelor of Science in Computer Science.
-            I work across full-stack development and data analysis — building
-            web and mobile applications and turning data into clear insights.
+            I currently work as a Full Stack Developer, building web and mobile
+            applications with a focus on clean architecture and reliable data
+            handling.
+          </p>
+          <p className="font-sans font-light text-ink-light leading-relaxed mb-5">
+            On the frontend and mobile side I work with React and Flutter. I
+            integrate with REST APIs and use Firebase and Supabase for
+            authentication and data management. For data work I use Python and
+            SQL along with Power BI and Excel for analysis and reporting.
           </p>
           <p className="font-sans font-light text-ink-light leading-relaxed">
-            I gained experience in technical documentation and systems analysis
-            during my internship at Pakistan Aeronautical Complex, and today I'm
-            focused on shipping thoughtful products as a Full-Stack Developer at
-            Metro Milan Aggarbatti.
+            I also use AI tools throughout my workflow to speed up debugging,
+            prototyping and research, while keeping the core logic and decisions
+            in my own hands.
           </p>
-          <blockquote className="border-l-2 border-sage pl-5 font-serif italic text-xl text-ink leading-relaxed mt-8">
-            I care about the small details — the parts you only notice when
-            they're missing.
-          </blockquote>
         </div>
 
         <div className="flex flex-col gap-4">

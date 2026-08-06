@@ -12,15 +12,23 @@ const skillGroups = [
   },
   {
     title: 'Frameworks & Platforms',
-    items: ['Flutter', 'React', 'Firebase', 'Supabase'],
+    items: ['Flutter', 'React', 'Firebase', 'Supabase', 'PostgreSQL'],
   },
   {
     title: 'Data & Analytics',
-    items: ['Python (pandas, numpy)', 'SQL', 'Power BI', 'Excel'],
+    items: ['pandas', 'numpy', 'seaborn', 'matplotlib', 'Selenium', 'Power BI', 'Excel'],
   },
   {
-    title: 'Tools',
-    items: ['Git', 'VS Code', 'Android Studio'],
+    title: 'DevOps & Tools',
+    items: ['Git', 'GitHub Actions', 'Vercel', 'Docker', 'VS Code', 'Android Studio'],
+  },
+  {
+    title: 'AI-Assisted Development',
+    items: ['Cursor', 'Claude'],
+  },
+  {
+    title: 'Currently Learning',
+    items: ['Node.js', 'Redis'],
   },
 ];
 
@@ -34,11 +42,24 @@ const logoUrls = {
   Supabase: `${CDN}/supabase/supabase-original.svg`,
   'Python (pandas, numpy)': `${CDN}/python/python-original.svg`,
   SQL: `${CDN}/postgresql/postgresql-original.svg`,
-  'Power BI': '/icons/powerbi.svg',
-  Excel: '/icons/excel.svg',
+  'Power BI': '/icons/power-bi-icon.svg',
+  Excel: '/icons/icons8-excel.svg',
   Git: `${CDN}/git/git-original.svg`,
   'VS Code': `${CDN}/vscode/vscode-original.svg`,
   'Android Studio': `${CDN}/androidstudio/androidstudio-original.svg`,
+  'GitHub Actions': `${CDN}/githubactions/githubactions-plain.svg`,
+  Vercel: `${CDN}/vercel/vercel-original.svg`,
+  Docker: `${CDN}/docker/docker-original.svg`,
+  'Node.js': '/icons/node-js-icon.svg',
+  Cursor: '/icons/cursor-ai-code-icon.svg',
+  Claude: '/icons/claude-code-icon.svg',
+  PostgreSQL: `${CDN}/postgresql/postgresql-original.svg`,
+  Redis: `${CDN}/redis/redis-original.svg`,
+  pandas: `${CDN}/pandas/pandas-original.svg`,
+  numpy: `${CDN}/numpy/numpy-original.svg`,
+  matplotlib: `${CDN}/matplotlib/matplotlib-original.svg`,
+  Selenium: `${CDN}/selenium/selenium-original.svg`,
+  seaborn: '/icons/seaborn-1.svg',
 };
 
 function getLogoForItem(item) {
