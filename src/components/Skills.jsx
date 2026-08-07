@@ -12,7 +12,7 @@ const skillGroups = [
   },
   {
     title: 'Frameworks & Platforms',
-    items: ['Flutter', 'React', 'Firebase', 'Supabase', 'PostgreSQL'],
+    items: ['Flutter', 'Provider', 'React', 'Firebase', 'Supabase', 'PostgreSQL'],
   },
   {
     title: 'Data & Analytics',
@@ -28,7 +28,7 @@ const skillGroups = [
   },
   {
     title: 'Currently Learning',
-    items: ['Node.js', 'Redis'],
+    items: ['Node.js', 'Redis', 'Kubernetes'],
   },
 ];
 
@@ -55,6 +55,7 @@ const logoUrls = {
   Claude: '/icons/claude-code-icon.svg',
   PostgreSQL: `${CDN}/postgresql/postgresql-original.svg`,
   Redis: `${CDN}/redis/redis-original.svg`,
+  Kubernetes: `${CDN}/kubernetes/kubernetes-plain.svg`,
   pandas: `${CDN}/pandas/pandas-original.svg`,
   numpy: `${CDN}/numpy/numpy-original.svg`,
   matplotlib: `${CDN}/matplotlib/matplotlib-original.svg`,

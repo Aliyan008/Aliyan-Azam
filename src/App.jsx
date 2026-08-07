@@ -5,6 +5,7 @@ import WhatIDo from './components/WhatIDo';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
+import Certifications from './components/Certifications';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Projects />
         <Experience />
         <Skills />
+        <Certifications />
         <Footer />
       </main>
     </div>
