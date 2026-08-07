@@ -9,7 +9,7 @@ const projects = [
     title: 'Sales ERP Admin Panel',
     description:
       'A centralized operations platform built with React and Supabase, handling order tracking, role-based access control (RBAC), and a structured ticket logging system for issue management. Implemented Supabase Row Level Security (RLS) policies and access control mechanisms as part of a full security audit, hardening the platform against unauthorized data access. Architected and developed independently, currently deployed in production for two active clients.',
-    stack: ['React', 'Supabase', 'MySQL', 'GitHub Actions', 'Docker'],
+      stack: ['React', 'Supabase', 'MySQL', 'GitHub Actions'],
     links: [],
   },
   {
@@ -54,7 +54,7 @@ function Projects() {
           Selected work.
         </h2>
       </Reveal>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5 items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-5 items-stretch">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} index={index} {...project} />
         ))}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Lock, Globe } from 'lucide-react';
 
@@ -53,8 +53,80 @@ function LinkIcon({ type, url }) {
 
 function ProjectCard({ index, title, description, stack, links = [] }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasHover, setHasHover] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  });
+  const cardRef = useRef(null);
   const hasLinks = links.length > 0;
   const number = String(index + 1).padStart(2, '0');
+
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setHasHover(mq.matches);
+    const handler = (e) => setHasHover(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (hasHover || !isExpanded) return;
+    function handleOutside(e) {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setIsExpanded(false);
+      }
+    }
+    document.addEventListener('pointerdown', handleOutside);
+    return () => document.removeEventListener('pointerdown', handleOutside);
+  }, [hasHover, isExpanded]);
+
+  const handleClick = () => {
+    if (hasHover) return;
+    setIsExpanded((prev) => !prev);
+  };
+  const handleMouseEnter = () => { if (hasHover) setIsExpanded(true); };
+  const handleMouseLeave = () => { if (hasHover) setIsExpanded(false); };
+
+  const Header = () => (
+    <>
+      <div className="flex items-center justify-between mb-5">
+        <span className="font-serif italic text-xs text-ink-faint">/ {number}</span>
+        <span className="text-xs uppercase tracking-widest text-ink-faint">Project</span>
+      </div>
+      <h3 className="font-serif text-2xl text-ink mb-3 leading-snug">{title}</h3>
+      <div className="flex flex-wrap gap-1.5 mb-3">
+        {stack.map((tech) => (
+          <span key={tech} className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 bg-cream-dark border border-warm-border text-ink-faint rounded-sm">
+            {techIcons[tech] && (
+              <img src={techIcons[tech]} alt="" width="12" height="12" className="w-3 h-3 object-contain" />
+            )}
+            {tech}
+          </span>
+        ))}
+      </div>
+    </>
+  );
+
+  const Footer = () => (
+    <>
+      {!hasHover && (
+        <span className="text-xs uppercase tracking-widest text-ink-faint mb-5">
+          {isExpanded ? 'Tap to collapse' : 'Tap for details'}
+        </span>
+      )}
+      <div className="flex flex-wrap items-center gap-2 mt-auto min-h-[28px]">
+        {hasLinks && links.map((link) => (
+          <LinkIcon key={link.type} type={link.type} url={link.url} />
+        ))}
+        {!hasLinks && (
+          <span className="flex items-center gap-1.5 text-sm text-ink-faint font-medium">
+            <Lock size={14} />
+            Confidential client project
+          </span>
+        )}
+      </div>
+    </>
+  );
 
   return (
     <motion.div
@@ -62,73 +134,36 @@ function ProjectCard({ index, title, description, stack, links = [] }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
-      className="relative h-[200px]"
+      className="relative"
     >
+      {/* Invisible sizer: in normal flow, never absolute, exists only so
+          Grid's items-stretch has real content height to match across a row.
+          Skipped on mobile since single-column has no row partner. */}
+      <div aria-hidden="true" className="hidden sm:flex invisible p-6 flex-col">
+        <Header />
+        <Footer />
+      </div>
+
       <article
-        onClick={() => setIsExpanded((prev) => !prev)}
-        className={`group absolute inset-x-0 top-0 bg-card-bg border border-warm-border rounded-md p-6 flex flex-col hover:-translate-y-1 hover:shadow-xl hover:border-sage hover:z-20 [transition:transform_0.3s_ease,box-shadow_0.3s_ease,border-color_0.3s_ease] cursor-pointer md:cursor-default ${
-          isExpanded ? 'z-20 shadow-xl' : 'z-10'
+        ref={cardRef}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={`group relative sm:absolute sm:inset-x-0 sm:top-0 w-full bg-card-bg border border-warm-border rounded-md p-6 flex flex-col [transition:transform_0.3s_ease,box-shadow_0.3s_ease,border-color_0.3s_ease] cursor-pointer sm:cursor-default ${
+          isExpanded ? 'sm:-translate-y-1 sm:shadow-xl sm:border-sage sm:z-20' : 'sm:z-10'
         }`}
       >
-        <div className="flex items-center justify-between mb-5">
-          <span className="font-serif italic text-xs text-ink-faint">
-            / {number}
-          </span>
-          <span className="text-xs uppercase tracking-widest text-ink-faint">
-            Project
-          </span>
-        </div>
-
-        <h3 className="font-serif text-2xl text-ink mb-3 leading-snug">
-          {title}
-        </h3>
-
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {stack.map((tech) => (
-            <span
-              key={tech}
-              className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 bg-cream-dark border border-warm-border text-ink-faint rounded-sm"
-            >
-              {techIcons[tech] && (
-                <img
-                  src={techIcons[tech]}
-                  alt=""
-                  width="12"
-                  height="12"
-                  className="w-3 h-3 object-contain"
-                />
-              )}
-              {tech}
-            </span>
-          ))}
-        </div>
-
+        <Header />
         <div
           className={`overflow-hidden transition-all duration-500 ease-in-out ${
             isExpanded ? 'max-h-[400px] opacity-100 mb-3' : 'max-h-0 opacity-0 mb-0'
-          } md:group-hover:max-h-[400px] md:group-hover:opacity-100 md:group-hover:mb-3`}
+          }`}
         >
           <p className="font-sans font-light text-sm text-ink-light leading-relaxed text-justify">
             {description}
           </p>
         </div>
-
-        <span className="text-xs uppercase tracking-widest text-ink-faint mb-5 md:hidden">
-          {isExpanded ? 'Tap to collapse' : 'Tap for details'}
-        </span>
-
-        <div className="flex flex-wrap items-center gap-2 mt-auto min-h-[28px]">
-          {hasLinks &&
-            links.map((link) => (
-              <LinkIcon key={link.type} type={link.type} url={link.url} />
-            ))}
-          {!hasLinks && (
-            <span className="flex items-center gap-1.5 text-sm text-ink-faint font-medium">
-              <Lock size={14} />
-              Confidential client project
-            </span>
-          )}
-        </div>
+        <Footer />
       </article>
     </motion.div>
   );
