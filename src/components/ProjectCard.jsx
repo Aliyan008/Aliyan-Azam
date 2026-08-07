@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Lock } from 'lucide-react';
+import { Lock, Globe } from 'lucide-react';
 
 const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
 
@@ -20,20 +20,40 @@ const techIcons = {
   MySQL: `${CDN}/mysql/mysql-original.svg`,
 };
 
-function ProjectCard({
-  index,
-  title,
-  description,
-  stack,
-  playStoreUrl,
-  secondaryLink,
-  secondaryLabel,
-}) {
+const linkMeta = {
+  github: { icon: null, label: 'View on GitHub', img: 'https://cdn.simpleicons.org/github' },
+  playstore: { icon: null, label: 'Get on Play Store', img: 'https://cdn.simpleicons.org/googleplay' },
+  live: { icon: Globe, label: 'Visit live site' },
+};
+
+function LinkIcon({ type, url }) {
+  const meta = linkMeta[type];
+  if (!meta) return null;
+  const Icon = meta.icon;
+
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={(e) => e.stopPropagation()}
+      className="group/link relative flex items-center justify-center w-7 h-7 rounded-full bg-cream-dark border border-warm-border text-ink-faint opacity-60 hover:opacity-100 hover:text-sage hover:border-sage transition-all"
+    >
+      {Icon ? (
+        <Icon size={13} />
+      ) : (
+        <img src={meta.img} alt="" width="13" height="13" className="w-[13px] h-[13px] object-contain grayscale opacity-70" />
+      )}
+      <span className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs bg-ink text-cream px-2 py-1 rounded opacity-0 group-hover/link:opacity-100 transition-opacity hidden md:block">
+        {meta.label}
+      </span>
+    </a>
+  );
+}
+
+function ProjectCard({ index, title, description, stack, links = [] }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const primaryHref = playStoreUrl || secondaryLink;
-  const primaryLabel = playStoreUrl ? 'Get on Play Store' : secondaryLabel;
-  const showSecondary = playStoreUrl && secondaryLink && secondaryLabel;
-  const hasLink = Boolean(primaryHref);
+  const hasLinks = links.length > 0;
   const number = String(index + 1).padStart(2, '0');
 
   return (
@@ -97,32 +117,12 @@ function ProjectCard({
           {isExpanded ? 'Tap to collapse' : 'Tap for details'}
         </span>
 
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-auto">
-          {hasLink && (
-            <a
-              href={primaryHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1.5 text-sm text-sage font-medium hover:gap-2.5 transition-all"
-            >
-              {primaryLabel}
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-          {showSecondary && (
-            <a
-              href={secondaryLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1.5 text-sm text-ink-light font-medium hover:text-sage hover:gap-2.5 transition-all"
-            >
-              {secondaryLabel}
-              <ArrowUpRight size={14} />
-            </a>
-          )}
-          {!hasLink && (
+        <div className="flex flex-wrap items-center gap-2 mt-auto min-h-[28px]">
+          {hasLinks &&
+            links.map((link) => (
+              <LinkIcon key={link.type} type={link.type} url={link.url} />
+            ))}
+          {!hasLinks && (
             <span className="flex items-center gap-1.5 text-sm text-ink-faint font-medium">
               <Lock size={14} />
               Confidential client project

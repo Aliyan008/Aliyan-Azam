@@ -12,7 +12,7 @@ const skillGroups = [
   },
   {
     title: 'Frameworks & Platforms',
-    items: ['Flutter', 'Provider', 'React', 'Firebase', 'Supabase', 'PostgreSQL'],
+    items: ['Flutter', 'React', 'Firebase', 'Supabase', 'PostgreSQL'],
   },
   {
     title: 'Data & Analytics',

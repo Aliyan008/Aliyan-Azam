@@ -10,9 +10,7 @@ const projects = [
     description:
       'A centralized operations platform built with React and Supabase, handling order tracking, role-based access control (RBAC), and a structured ticket logging system for issue management. Implemented Supabase Row Level Security (RLS) policies and access control mechanisms as part of a full security audit, hardening the platform against unauthorized data access. Architected and developed independently, currently deployed in production for two active clients.',
     stack: ['React', 'Supabase', 'MySQL', 'GitHub Actions', 'Docker'],
-    playStoreUrl: null,
-    secondaryLink: null,
-    secondaryLabel: null,
+    links: [],
   },
   {
     id: 'field-sales-app',
@@ -20,10 +18,9 @@ const projects = [
     description:
       'Replaced a manual paper-based ordering workflow, where field reps filled out paper bills that office staff later transcribed into Excel, with a Flutter application supporting real-time order sync and offline queuing. Implemented API integration with structured error handling and retry logic to ensure reliable data transfer between the app and backend. Added live GPS-based location tracking for attendance verification and order validation, ensuring orders are only logged when placed at the correct location. Used daily by 40+ field reps in production, with security measures in place to protect rep and order data.',
     stack: ['Flutter', 'Firebase', 'PHP', 'MySQL'],
-    playStoreUrl:
-      'https://play.google.com/store/apps/details?id=com.franscent.orderbooking',
-    secondaryLink: null,
-    secondaryLabel: null,
+    links: [
+      { type: 'playstore', url: 'https://play.google.com/store/apps/details?id=com.franscent.orderbooking' },
+    ],
   },
   {
     id: 'dashboard',
@@ -31,9 +28,9 @@ const projects = [
     description:
       'Interactive Power BI dashboard analyzing retail sales performance by customer, country, and time period with KPI tracking and slicers.',
     stack: ['Power BI', 'Excel'],
-    playStoreUrl: null,
-    secondaryLink: 'https://github.com/Aliyan008/Sales-Dashboard',
-    secondaryLabel: 'View Project',
+    links: [
+      { type: 'github', url: 'https://github.com/Aliyan008/Sales-Dashboard' },
+    ],
   },
   {
     id: 'wordwise',
@@ -41,9 +38,10 @@ const projects = [
     description:
       'Word puzzle game inspired by Wordle with user authentication, gameplay preferences, and leaderboard flow using Supabase.',
     stack: ['React', 'Supabase', 'GitHub Actions'],
-    playStoreUrl: null,
-    secondaryLink: 'https://wordwise-orpin.vercel.app/',
-    secondaryLabel: 'Visit Site',
+    links: [
+      { type: 'github', url: 'https://github.com/Aliyan008/wordwise' },
+      { type: 'live', url: 'https://wordwise-orpin.vercel.app/' },
+    ],
   },
 ];
 
