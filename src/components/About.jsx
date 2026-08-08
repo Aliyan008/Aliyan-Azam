@@ -21,32 +21,50 @@ function About() {
 
       <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
         <div>
-          <p className="font-sans font-light text-ink-light leading-relaxed mb-5">
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0 }}
+            className="font-sans font-light text-ink-light leading-relaxed mb-5"
+          >
             I graduated from Dawood University of Engineering &amp; Technology
             (DUET) in July 2025 with a Bachelor of Science in Computer Science.
             I currently work as a Full Stack Developer, building web and mobile
             applications with a focus on clean architecture and reliable data
             handling.
-          </p>
-          <p className="font-sans font-light text-ink-light leading-relaxed mb-5">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.15 }}
+            className="font-sans font-light text-ink-light leading-relaxed mb-5"
+          >
             On the frontend and mobile side I work with React and Flutter. I
             integrate with REST APIs and use Firebase and Supabase for
             authentication and data management. For data work I use Python and
             SQL along with Power BI and Excel for analysis and reporting.
-          </p>
-          <p className="font-sans font-light text-ink-light leading-relaxed">
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+            className="font-sans font-light text-ink-light leading-relaxed"
+          >
             I also use AI tools throughout my workflow to speed up debugging,
             prototyping and research, while keeping the core logic and decisions
             in my own hands.
-          </p>
+          </motion.p>
         </div>
 
         <div className="flex flex-col gap-4">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{
                 duration: 0.5,

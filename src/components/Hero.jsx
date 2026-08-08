@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 import resumePdf from '../assets/Aliyan Azam.pdf';
+import { useLenisScroll } from '../lib/LenisProvider';
 
 const enter = (delay) => ({
   initial: { opacity: 0, y: 16 },
@@ -9,6 +10,8 @@ const enter = (delay) => ({
 });
 
 function Hero() {
+  const { scrollToId } = useLenisScroll() || {};
+
   return (
     <section
       id="hero"
@@ -56,6 +59,10 @@ function Hero() {
       <motion.div {...enter(0.45)} className="flex flex-wrap gap-3">
         <a
           href="#projects"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToId?.('projects');
+          }}
           className="inline-flex items-center gap-2 bg-ink text-white text-sm font-medium px-6 py-2.5 rounded-sm hover:bg-sage transition-colors"
         >
           View work

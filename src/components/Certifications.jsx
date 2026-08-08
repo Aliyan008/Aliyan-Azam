@@ -48,40 +48,54 @@ function Certifications() {
 
         <div className="flex flex-col gap-10">
           {certifications.map((cert, index) => (
-            <motion.div
-              key={cert.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
-              className="relative"
-            >
-              <div className="absolute -left-8 top-1.5 w-3.5 h-3.5 rounded-full bg-sage border-4 border-cream" />
+            <div key={cert.id} className="relative">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
+              >
+                <div className="absolute -left-8 top-1.5 w-3.5 h-3.5 rounded-full bg-sage border-4 border-cream" />
+                <span className="text-xs uppercase tracking-widest text-ink-faint">
+                  {cert.date}
+                </span>
+                <h3 className="font-serif text-xl text-ink mt-1 mb-1 leading-snug">
+                  {cert.title}
+                </h3>
+              </motion.div>
 
-              <span className="text-xs uppercase tracking-widest text-ink-faint">
-                {cert.date}
-              </span>
-              <h3 className="font-serif text-xl text-ink mt-1 mb-1 leading-snug">
-                {cert.title}
-              </h3>
-              <p className="font-sans text-sm text-sage mb-2">
+              <motion.p
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 + 0.15 }}
+                className="font-sans text-sm text-sage mb-2"
+              >
                 {cert.issuer} · {cert.meta}
-              </p>
-              <p className="font-sans font-light text-sm text-ink-light leading-relaxed mb-2 max-w-2xl">
-                {cert.description}
-              </p>
-              {cert.verifyUrl && (
-                <a
-                  href={cert.verifyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-sage font-medium hover:gap-2.5 transition-all"
-                >
-                  Verify Certificate
-                  <ArrowUpRight size={14} />
-                </a>
-              )}
-            </motion.div>
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 + 0.3 }}
+              >
+                <p className="font-sans font-light text-sm text-ink-light leading-relaxed mb-2 max-w-2xl text-justify">
+                  {cert.description}
+                </p>
+                {cert.verifyUrl && (
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-sage font-medium hover:gap-2.5 transition-all"
+                  >
+                    Verify Certificate
+                    <ArrowUpRight size={14} />
+                  </a>
+                )}
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
