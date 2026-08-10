@@ -51,7 +51,7 @@ function CompositionLayer({ geo, showLine, viewportWidth }) {
     <div className="absolute inset-0 flex items-center justify-center">
       <Mark animate />
       <motion.div
-        className="absolute h-[2px] bg-ink"
+        className="absolute h-px sm:h-[1.5px] xl:h-[2px] bg-ink"
         style={{ top: geo.crossbarY, right: viewportWidth - geo.leftAnchor }}
         initial={{ width: 0 }}
         animate={{ width: showLine ? geo.leftAnchor : 0 }}
@@ -59,7 +59,7 @@ function CompositionLayer({ geo, showLine, viewportWidth }) {
       />
       {geo.leftInnerEdge != null && geo.rightInnerEdge != null && (
         <motion.div
-          className="absolute h-[2px] bg-ink"
+          className="absolute h-px sm:h-[1.5px] xl:h-[2px] bg-ink"
           style={{
             top: geo.crossbarY,
             left: geo.leftInnerEdge,
@@ -71,7 +71,7 @@ function CompositionLayer({ geo, showLine, viewportWidth }) {
         />
       )}
       <motion.div
-        className="absolute h-[2px] bg-ink"
+        className="absolute h-px sm:h-[1.5px] xl:h-[2px] bg-ink"
         style={{ top: geo.crossbarY, left: geo.rightAnchor }}
         initial={{ width: 0 }}
         animate={{ width: showLine ? viewportWidth - geo.rightAnchor : 0 }}
@@ -104,7 +104,8 @@ function Splash({ onComplete }) {
       const leftInk = getInkEdgeAtRow(measureLeftRef.current, CROSSBAR_RATIO);
       const rightInk = getInkEdgeAtRow(measureRightRef.current, CROSSBAR_RATIO);
 
-      const BLEED = 5; // px the line overlaps INTO the letter stroke, guarantees no visible gap
+      const BLEED_RATIO = 0.03; // fraction of letter height, scales bleed across screen sizes
+      const BLEED = leftRect.height * BLEED_RATIO;
       setGeo({
         crossbarY,
         leftAnchor: leftInk ? leftInk.leftPx + BLEED : leftRect.left,
