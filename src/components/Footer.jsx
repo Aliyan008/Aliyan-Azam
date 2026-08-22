@@ -14,8 +14,8 @@ const links = [
   {
     href: 'https://github.com/Aliyan008',
     label: 'GitHub',
-    iconType: 'img',
-    iconSrc: 'https://cdn.simpleicons.org/github',
+    iconType: 'fa',
+    faClass: 'fa-brands fa-github',
     external: true,
   },
 ];
@@ -49,15 +49,6 @@ function Footer() {
               className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
             >
               {link.iconType === 'lucide' && <link.Icon size={14} />}
-              {link.iconType === 'img' && (
-                <img
-                  src={link.iconSrc}
-                  alt=""
-                  width="14"
-                  height="14"
-                  className="w-3.5 h-3.5 object-contain invert opacity-70"
-                />
-              )}
               {link.iconType === 'fa' && <i className={`${link.faClass} text-sm`} />}
               <span className="underline underline-offset-4 decoration-white/20 group-hover:decoration-white">
                 {link.label}
