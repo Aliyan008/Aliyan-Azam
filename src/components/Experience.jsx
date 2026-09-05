@@ -4,7 +4,7 @@ import Reveal from './Reveal';
 
 const experience = [
   {
-    company: 'Metro Agarbatti Company',
+    company: 'Metro Milan',
     role: 'Full Stack Developer',
     period: 'July 2025 — Present',
     location: 'Karachi, Pakistan',
