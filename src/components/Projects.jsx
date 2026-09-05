@@ -16,7 +16,7 @@ const projects = [
     id: 'field-sales-app',
     title: 'Field Sales Mobile App',
     description:
-      'Replaced a manual paper-based ordering workflow, where field reps filled out paper bills that office staff later transcribed into Excel, with a Flutter application supporting real-time order sync and offline queuing. Implemented API integration with structured error handling and retry logic to ensure reliable data transfer between the app and backend. Added live GPS-based location tracking for attendance verification and order validation, ensuring orders are only logged when placed at the correct location. Used daily by 40+ field reps in production, with security measures in place to protect rep and order data.',
+      'Replaced a manual paper-based ordering workflow, where field reps filled out paper bills that office staff later transcribed into Excel, with a Flutter application supporting real-time order sync and offline queuing. Implemented API integration with structured error handling and retry logic to ensure reliable data transfer between the app and backend. Added live GPS-based location tracking for attendance verification and order validation, ensuring orders are only logged when placed at the correct location. Used daily by 80+ field reps in production, with security measures in place to protect rep and order data.',
     stack: ['Flutter', 'Firebase', 'PHP', 'MySQL'],
     links: [
       { type: 'playstore', url: 'https://play.google.com/store/apps/details?id=com.franscent.orderbooking' },

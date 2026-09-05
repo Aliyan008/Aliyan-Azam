@@ -9,7 +9,7 @@ const experience = [
     period: 'July 2025 — Present',
     location: 'Karachi, Pakistan',
     points: [
-      'Fixed a backend race condition and added offline sync polling in a custom Sales ERP platform used daily by 40+ field reps, cutting 10-15 failed orders a day down to zero and ending recurring user complaints.',
+      'Fixed a backend race condition and added offline sync polling in a custom Sales ERP platform used daily by 80+ field reps, cutting 20-30 failed orders a day down to zero and ending recurring user complaints.',
       'Added live location tracking to verify reps were placing orders at the correct shop, reducing false orders and false attendance by over 90%.',
       'Replaced informal WhatsApp based issue reporting with a custom ticketing system for the office sales team, bringing full visibility to bugs and issues that used to go untracked.',
     ],
