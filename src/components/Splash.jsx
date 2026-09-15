@@ -84,20 +84,21 @@ function CompositionLayer({ geo, showLine, viewportWidth }) {
 function Splash({ onComplete }) {
   const [phase, setPhase] = useState('measuring');
   const [geo, setGeo] = useState(null);
+  const [viewportWidth, setViewportWidth] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const measureLeftRef = useRef(null);
   const measureRightRef = useRef(null);
+  const phaseRef = useRef(phase);
+  phaseRef.current = phase;
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     let cancelled = false;
     const timers = [];
+    let debounceId = null;
 
-    async function start() {
-      if (document.fonts && document.fonts.ready) {
-        await document.fonts.ready;
-      }
-      await new Promise((r) => requestAnimationFrame(r));
-      if (cancelled || !measureLeftRef.current || !measureRightRef.current) return;
+    function measureAndFreeze() {
+      if (!measureLeftRef.current || !measureRightRef.current) return;
 
       const leftRect = measureLeftRef.current.getBoundingClientRect();
       const crossbarY = leftRect.top + leftRect.height * CROSSBAR_RATIO;
@@ -113,6 +114,18 @@ function Splash({ onComplete }) {
         leftInnerEdge: leftInk ? leftInk.rightPx - BLEED : null,
         rightInnerEdge: rightInk ? rightInk.leftPx + BLEED : null,
       });
+      setViewportWidth(window.innerWidth);
+      setViewportHeight(window.innerHeight);
+    }
+
+    async function start() {
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+      await new Promise((r) => requestAnimationFrame(r));
+      if (cancelled || !measureLeftRef.current || !measureRightRef.current) return;
+
+      measureAndFreeze();
       setPhase('letters');
 
       timers.push(setTimeout(() => setPhase('line'), 800));
@@ -125,24 +138,38 @@ function Splash({ onComplete }) {
       );
     }
 
+    function onViewportChange() {
+      if (debounceId) clearTimeout(debounceId);
+      debounceId = setTimeout(() => {
+        debounceId = null;
+        if (cancelled) return;
+        if (phaseRef.current === 'split') return;
+        measureAndFreeze();
+      }, 200);
+    }
+
+    window.addEventListener('resize', onViewportChange);
+    window.addEventListener('orientationchange', onViewportChange);
+
     start();
 
     return () => {
       cancelled = true;
       timers.forEach(clearTimeout);
+      if (debounceId) clearTimeout(debounceId);
+      window.removeEventListener('resize', onViewportChange);
+      window.removeEventListener('orientationchange', onViewportChange);
       document.body.style.overflow = '';
     };
   }, [onComplete]);
 
   const showLine = phase === 'line' || phase === 'split';
   const splitting = phase === 'split';
-  const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
-  const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
 
   return (
     <div className="fixed inset-0 z-[100] pointer-events-none overflow-hidden">
       {!geo && <div className="fixed inset-0 bg-cream" />}
-      {phase === 'measuring' && (
+      {phase !== 'split' && (
         <div className="fixed inset-0 flex items-center justify-center opacity-0">
           <Mark leftRef={measureLeftRef} rightRef={measureRightRef} />
         </div>
