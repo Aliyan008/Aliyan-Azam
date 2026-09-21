@@ -5,7 +5,7 @@ import Reveal from './Reveal';
 
 const stats = [
   { value: '2025', label: 'BS Computer Science, DUET' },
-  { value: '1.5+', label: 'Years of experience' },
+  { value: '1+', label: 'Years of experience' },
   { value: '3', label: 'Production systems built and maintained' },
 ];
 
